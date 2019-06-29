@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "344953552468",
+    "firebase_url": "https://nativescript-test-ss.firebaseio.com",
+    "project_id": "nativescript-test-ss",
+    "storage_bucket": "nativescript-test-ss.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344953552468:android:b8dd419f9c4c16e3",
+        "android_client_info": {
+          "package_name": "org.nativescript.testpush"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344953552468-e3q8qemj8odcc0lar9tmrrtfq9f8sccp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPWcBO-zYEHL7vlXhei1tVLtIvBkaMxag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "344953552468-e3q8qemj8odcc0lar9tmrrtfq9f8sccp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 const firebase = require("nativescript-plugin-firebase");
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
+import { cleverTap } from "nativescript-clevertap";
+
 
 @Component({
     selector: "ns-app",
@@ -9,7 +11,17 @@ import { messaging, Message } from "nativescript-plugin-firebase/messaging";
 })
 export class AppComponent implements OnInit {
     ngOnInit() {
+        cleverTap.register();
+        cleverTap.updateProfile({
+            Name: "Harsha Nutal",
+            Date: new Date(),
+            Identity: 112,
+            Email: "harsha@webileapps.com"
+        });
+        this.onLoginTapped();
+
         console.log("\n_____________________________-------------------------\n");
+        console.log("rerun");
         // firebase.init({
         //     onMessageReceivedCallback: (message: Message) => {
         //       console.log(`Title: ${message.title}`);
@@ -27,22 +39,35 @@ export class AppComponent implements OnInit {
         // );
 
         firebase.init({
-            showNotificationsWhenInForeground: true,
-          });
-        messaging.registerForPushNotifications({
-            onPushTokenReceivedCallback: (token: string): void => {
-                console.log("Firebase plugin received a push token: " + token);
-            },
-
-            onMessageReceivedCallback: (message: Message) => {
-                console.log("Push message received: " + message.title);
-            },
-
-            // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
-            showNotifications: true,
-
-            // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
             showNotificationsWhenInForeground: true
-        }).then(() => console.log("Registered for push"));
+        });
+        messaging
+            .registerForPushNotifications({
+                onPushTokenReceivedCallback: (token: string): void => {
+                    console.log(
+                        "Firebase plugin received a push token:" + token
+                    );
+                },
+
+                onMessageReceivedCallback: (message: Message) => {
+                    console.log("Push message received: " + message.title);
+                },
+
+                // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
+                showNotifications: true,
+
+                // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
+                showNotificationsWhenInForeground: true
+            })
+            .then(() => console.log("Registered for push"));
+    }
+
+    onLoginTapped() {
+        cleverTap.onUserLogin({
+            Name: "Harsha Nutal",
+            Date: new Date(),
+            Identity: 112,
+            Email: "harsha@webileapps.com"
+        });
     }
 }

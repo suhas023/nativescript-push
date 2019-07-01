@@ -21,6 +21,14 @@
 		android:label="@string/app_name"
 		android:theme="@style/AppTheme">
 
+    <meta-data
+        android:name="CLEVERTAP_ACCOUNT_ID"
+        android:value="WW4-684-4R5Z"/>
+
+    <meta-data
+        android:name="CLEVERTAP_TOKEN"
+        android:value="4b6-400"/>
+
 		<activity
 			android:name="com.tns.NativeScriptActivity"
 			android:label="@string/title_activity_kimera"

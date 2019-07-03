@@ -31,6 +31,9 @@ export class ItemService {
         { id: 25, name: "Masip", role: "Goalkeeper" }
     );
 
+
+    notifications: any[] = ["Asd"];
+
     getItems(): Array<Item> {
         return this.items;
     }

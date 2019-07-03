@@ -2,6 +2,9 @@ import { Component, OnInit } from "@angular/core";
 const firebase = require("nativescript-plugin-firebase");
 import { messaging, Message } from "nativescript-plugin-firebase/messaging";
 import { cleverTap } from "nativescript-clevertap";
+import { ItemService } from "./item/item.service";
+var trace = require("trace");
+
 
 
 @Component({
@@ -10,18 +13,15 @@ import { cleverTap } from "nativescript-clevertap";
     templateUrl: "./app.component.html"
 })
 export class AppComponent implements OnInit {
-    ngOnInit() {
-        cleverTap.register();
-        cleverTap.updateProfile({
-            Name: "Harsha Nutal",
-            Date: new Date(),
-            Identity: 112,
-            Email: "harsha@webileapps.com"
-        });
-        this.onLoginTapped();
+  constructor(private itemService: ItemService) {
 
-        console.log("\n_____________________________-------------------------\n");
-        console.log("rerun");
+  }
+    ngOnInit() {
+      trace.enable();
+      trace.write("-- new init", trace.categories.Debug);
+        cleverTap.register();
+
+        console.log("\n__________________________________________________________\n");
         // firebase.init({
         //     onMessageReceivedCallback: (message: Message) => {
         //       console.log(`Title: ${message.title}`);
@@ -48,14 +48,14 @@ export class AppComponent implements OnInit {
                         "Firebase plugin received a push token:" + token
                     );
                 },
-
                 onMessageReceivedCallback: (message: Message) => {
-                    console.log("Push message received: " + message.title);
+                    console.log("Push message received: " + JSON.stringify(message));
+                    // this.itemService.notifications.push(message.title);
+                    trace.write(message.title, trace.categories.Debug);
+                    alert(JSON.stringify(message));
                 },
-
                 // Whether you want this plugin to automatically display the notifications or just notify the callback. Currently used on iOS only. Default true.
                 showNotifications: true,
-
                 // Whether you want this plugin to always handle the notifications when the app is in foreground. Currently used on iOS only. Default false.
                 showNotificationsWhenInForeground: true
             })
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit {
             Name: "Harsha Nutal",
             Date: new Date(),
             Identity: 112,
-            Email: "harsha@webileapps.com"
+            Email: "harsha@webileapps.com",
         });
     }
 }

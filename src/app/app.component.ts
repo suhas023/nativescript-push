@@ -17,6 +17,8 @@ export class AppComponent implements OnInit {
 
   }
     ngOnInit() {
+        this.onLoginTapped();
+
       trace.enable();
       trace.write("-- new init", trace.categories.Debug);
         cleverTap.register();
@@ -64,10 +66,10 @@ export class AppComponent implements OnInit {
 
     onLoginTapped() {
         cleverTap.onUserLogin({
-            Name: "Harsha Nutal",
+            Name: "Marax TEST USER 1",
             Date: new Date(),
-            Identity: 112,
-            Email: "harsha@webileapps.com",
+            Identity: 619,
+            Email: "marax@test1.com",
         });
     }
 }

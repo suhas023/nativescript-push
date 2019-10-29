@@ -13,6 +13,7 @@ export class EventsComponent implements OnInit {
 
   ngOnInit() {
     console.log("events component loaded");
+    cleverTap.createNotificationChannel({ channelId: "marax", name: "marax", description: "test marax push", importance: "6", showBadge: true })
   }
 
   onTapProductSearch() {
